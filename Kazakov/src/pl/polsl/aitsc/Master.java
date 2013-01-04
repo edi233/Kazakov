@@ -1,10 +1,8 @@
 package pl.polsl.aitsc;
 
-import pl.polsl.aitsc.algorithm.KazakovMatrix;
-import pl.polsl.aitsc.algorithm.PiMatrix;
-import pl.polsl.aitsc.algorithm.RawData;
-import pl.polsl.aitsc.algorithm.SigmaMatrix;
-import pl.polsl.aitsc.file.operations.Input;
+import pl.polsl.aitsc.algorithm.KazakovAlgorithm;
+import pl.polsl.aitsc.utils.Input;
+import pl.polsl.aitsc.utils.KoByte;
 
 public class Master {
 
@@ -12,7 +10,7 @@ public class Master {
 	 * Entry point of the application
 	 * 
 	 * @param args
-	 *            - input file
+	 *            - input file name
 	 */
 	public static void main(String[] args) {
 //		if (!(args.length > 0)) {
@@ -20,15 +18,11 @@ public class Master {
 //		}
 		String fileName = "test.txt";
 		
-		RawData rawData= Input.getDataFromFile(fileName);
-		SigmaMatrix sigma = Input.getSigmaMatrix(rawData);
-		PiMatrix pi = Input.getPiMatrix(rawData);
+		KazakovAlgorithm kazakov = Input.getDataFromFile(fileName);
 		
-		KazakovMatrix km = new KazakovMatrix(sigma,pi);
-		
-		 byte b = (byte) 0b10001000;
-		System.out.print(Byte.toString(b));
-
+		KoByte kb = null;
+			kb = new KoByte("01010101");
+		System.out.println(kb.toString());
 	}
 
 }
